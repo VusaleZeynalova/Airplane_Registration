@@ -1,0 +1,157 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    position: relative;
+    background-image: url(../pexels-david-mcbee-115491.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+#login {
+    margin-top: 50px!important;
+    margin: auto!important;
+    background-color: transparent!important;
+    padding: 15px;
+}
+#register {
+    margin-top: 50px !important;
+    margin: auto !important;
+    background-color: transparent !important;
+    padding: 15px;
+}
+#forgotpassword {
+    margin-top: 50px !important;
+    margin: auto !important;
+    background-color: transparent !important;
+    padding: 15px;
+    color: white !important;
+}
+
+#forgotpassword .btn-primary {
+    background-color: unset;
+    border-color: yellow;
+}
+#forgotpassword .text-danger  {
+    color: yellow !important;
+}
+#register  {
+    color: white !important;
+}
+ #account {
+    color: white;
+}
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+.form-group a {
+    color: white;
+}
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+#register .text-danger li{
+    color:yellow!important;
+}
+#login .btn-primary {
+    background-color: unset;
+    border-color: yellow;
+}
+#register .btn-primary {
+    background-color: unset!important;
+    border-color: yellow!important;
+}
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/*CityController*/
+.city {
+    position:relative!important;
+    background-image: url("../home-background.jpg");
+    width: 100% !important;
+    height: 100% !important;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
+    .city #result {
+        margin-top: 100px;
+        position: absolute;
+        margin-top: 170px;
+        margin-left: 283px;
+        color: oldlace;
+        font-size: 55px!important;
+    }
+
+.dropdown-menu {
+    color: #009CFF !important;
+    font-weight:500!important;
+}
+/*AddDep*/
+.departure{
+    position:relative!important;
+}
+    .departure form {
+        width: 40%!important;
+        margin: auto!important;
+    }
+.departure button{
+    margin-left:200px!important;
+}
+
+.registration{
+    position:absolute;
+}
+.registration button{
+    margin-top:31px;
+}
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}

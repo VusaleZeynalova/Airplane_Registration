@@ -1,0 +1,46 @@
+﻿@using layihe.Dtos.FlightDtos
+@model List<FlightToListDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    .flightIndex .table {
+        background-color: whitesmoke;
+        margin-left: 20px;
+        color: dodgerblue;
+    }
+</style>
+<div class="city">
+    <div style="position:absolute" class="flightIndex">
+        <a href="/Flight/Registration" >Add</a>
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+          <th>From</th>
+          <th>To</th>
+          <th>Departure Time</th>
+          <th>Arrivial Time</th>
+          <th>Capacity</th>
+          <th>Seating Capacity</th>
+          <th>Price</th>
+          </tr>     
+        </thead>
+        <tbody>
+            @foreach(var f in Model)
+            { 
+                <tr>
+                    <td>@f.DepartureCity.DepName</td>
+                    <td>@f.ArrivialCity.Name</td>
+                    <td>@f.DepartureTime</td>
+                    <td>@f.ArrivialTime</td>
+                    <td>@f.Capacity</td>
+                    <td>@f.SeatingCapacity</td>
+                    <td>@f.Price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    </div>
+
+</div>

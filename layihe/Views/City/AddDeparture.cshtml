@@ -1,0 +1,51 @@
+﻿@using layihe.Dtos.CityDtos
+@model DepatureCityToAddDto
+@{
+    Layout = "_AdminLayout";
+}
+<style>   
+    .departure {
+        position: relative !important;
+        top:40px;
+    }
+
+        .departure form {
+            width: 40% !important;
+            text-align:center;
+            margin: auto !important;
+        }
+
+       
+</style>
+<div style="position:absolute">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="~/depcity1.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="~/depcity2.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="~/depcity3.jpg" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+<div style="position:relative" class="departure">
+    <form asp-controller="City" asp-action="AddDeparture" method="post" >
+        <div class="mb-3">
+            <h1 style="color:floralwhite;text-align:center">Departure city name</h1>
+            <input type="text" class="form-control" id="id" asp-for="DepName" placeholder="Enter DepartureCity">
+        </div>
+        <button type="submit" class="btn btn-primary">Save City</button>
+    </form>
+</div>
