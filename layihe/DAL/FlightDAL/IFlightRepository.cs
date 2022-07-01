@@ -10,5 +10,8 @@ namespace layihe.DAL.FlightDAL
     {
         Task Addsync(NewFlight newFlight);
         Task<List<NewFlight>> Get();
+        Task<List<NewFlight>> Find(int depId,int toId,string date);
+        Task<List<NewFlight>> Get(int depId);
+        Task<NewFlight> GetFlight(int id);
     }
 }

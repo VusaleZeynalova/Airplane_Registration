@@ -110,6 +110,15 @@ a {
 .registration button{
     margin-top:31px;
 }
+.flightfind {
+    position: relative !important;
+    background-image: url("../flihgtsearchbackground.jpg");
+    width: 100% !important;
+    height: 100% !important;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+}
 /* Sticky footer styles
 -------------------------------------------------- */
 html {

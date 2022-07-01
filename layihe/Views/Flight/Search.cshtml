@@ -1,0 +1,63 @@
+﻿
+@using layihe.Dtos.FlightDtos
+@model FlightToAddDto
+
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    .searchflight {
+        position: absolute;
+        background-color: unset;
+        padding: 25px;
+        margin-left: 80px;
+        margin-top: 30px;
+        text-align:center!important;
+        font-size:30px;
+        color:ghostwhite;
+    }
+
+    .searchflight button {
+        margin-top: 52px;
+        width:150px!important;
+    }
+
+    .searchflight-container {
+        position: relative !important;
+        background-image: url("../search-background.jpg");
+        width: 100% !important;
+        height: 101% !important;
+        background-size: cover;
+        background-position: center;
+    }
+    .searchflight-container .mb-3{
+        float:left!important;
+        margin-right:15px;
+    }
+    .searchflight .form-control{
+        background-color:white!important;
+    }
+</style>
+
+<div class="searchflight-container">
+    <div class="searchflight">
+        <form asp-controller="Flight" asp-action="Find" method="post">
+                <div class="mb-3" >
+                    <label for="depname" class="form-label">DepartureCity Name</label>
+                 <select class="form-control"  asp-for="DepartureCityId" asp-items="@(new SelectList(Model.DepartureCities,"Id","DepName"))"></select>
+                </div>
+                <div class="mb-3">
+                    <label for="arrname" class="form-label">ArrivialCity Name</label>
+                    <select class="form-control"   asp-for="ArrivialCityId" asp-items="@(new SelectList(Model.ArrivialCities, "ArrivialCityId", "Name"))"></select>
+                </div>
+                <div class="mb-3">
+                    <label for="deptime" class="form-label">DepartureTime</label>
+                    <input type="date" value="dd/mm/yyyy"  class="form-control"   asp-for="DepartureTime" />
+                </div>
+                <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+        </form>
+    </div>
+</div>

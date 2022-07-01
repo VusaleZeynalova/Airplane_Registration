@@ -1,5 +1,6 @@
-﻿@using layihe.Dtos.FlightDtos
-@model List<FlightToListDto> 
+﻿
+@using layihe.Dtos.FlightDtos
+@model List<FlightToListDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -24,12 +25,18 @@
         --bs-table-striped-bg: lavender;
         --bs-table-striped-color: dodgerblue;
     }
+    #dontflighth1{
+        text-align:center;
+        padding-top:40px;
+        color:floralwhite;
+        
+    }
 </style>
 <div class="city">
-    
+
+    <h1 id="dontflighth1" >Don't Find Flight</h1>
 
     <div style="position:absolute" class="flightIndex">
-        <a href="/Flight/Registration" class="btn btn-primary">Add</a>
         <a href="/Flight/Search" class="btn btn-primary">Search</a>
 
         <table class="table table-bordered table-striped">
@@ -67,3 +74,4 @@
     </div>
 
 </div>
+

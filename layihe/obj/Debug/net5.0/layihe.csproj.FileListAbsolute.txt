@@ -178,3 +178,6 @@ C:\Users\Acer\source\repos\layihe\layihe\obj\Debug\net5.0\layihe.genruntimeconfi
 C:\Users\Acer\source\repos\layihe\layihe\obj\Debug\net5.0\Razor\Views\City\Main.cshtml.g.cs
 C:\Users\Acer\source\repos\layihe\layihe\obj\Debug\net5.0\Razor\Views\Flight\Index.cshtml.g.cs
 C:\Users\Acer\source\repos\layihe\layihe\obj\Debug\net5.0\Razor\Views\Flight\Registration.cshtml.g.cs
+C:\Users\Acer\source\repos\layihe\layihe\obj\Debug\net5.0\Razor\Views\Flight\Search.cshtml.g.cs
+C:\Users\Acer\source\repos\layihe\layihe\obj\Debug\net5.0\Razor\Views\Flight\Find.cshtml.g.cs
+C:\Users\Acer\source\repos\layihe\layihe\obj\Debug\net5.0\Razor\Views\Flight\DontFindFlight.cshtml.g.cs

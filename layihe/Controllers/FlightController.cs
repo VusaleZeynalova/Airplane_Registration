@@ -31,6 +31,42 @@ namespace layihe.Controllers
             await _flightServices.Addasync(flightToAddDto);
             return RedirectToAction("Index");
         }
+        
+        public async Task<IActionResult> Search( )
+        {
+         return View(await _flightServices.InnerModel());
+        }
+        public async Task<IActionResult> Find(FlightToAddDto flightToAddDto)
+        {
+            try
+            {
+                if (flightToAddDto.DepartureCityId != null && flightToAddDto.ArrivialCityId != null && flightToAddDto.DepartureTime != null)
+                {
+                    var flight = await _flightServices.Find(flightToAddDto.DepartureCityId, flightToAddDto.ArrivialCityId,(flightToAddDto.DepartureTime).ToShortDateString());
+                    if (flight.Count == 0)
+                    {
+                        return RedirectToAction("DontFindFlight",new { id = flightToAddDto.DepartureCityId });
+                    }
+                    else
+                    {
+                        return View(flight);
+                    }
+                }
+                else
+                {
+                  return RedirectToAction("DontFindFlight");
+
+                }
+            }
+            catch(Exception ex)
+            {
+                return View(BadRequest(ex.Message));
+            }
+        }
+        public async Task<IActionResult> DontFindFlight(int id)
+        {
+            return View(await _flightServices.Get(id));
+        }
 
     }
 }

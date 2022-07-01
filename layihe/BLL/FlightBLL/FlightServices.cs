@@ -30,6 +30,23 @@ namespace layihe.BLL.FlightBLL
             await _flightUnitOfWork.Commit();
         }
 
+        public async Task<List<FlightToListDto>> Find(int depId, int toId, string date)
+        {
+            if (depId != null && toId != null && date != null)
+            {
+                List<NewFlight> flights = await _flightUnitOfWork.FlightRepository.Find(depId, toId,date);
+                List<FlightToListDto> flightToListDtos=  _mapper.Map<List<FlightToListDto>>(flights);
+                return flightToListDtos;
+            }
+            else
+            {
+                List<NewFlight> flights = await _flightUnitOfWork.FlightRepository.Find(depId, toId,date);
+                List<FlightToListDto> flightToListDtos = _mapper.Map<List<FlightToListDto>>(flights);
+                return flightToListDtos;
+            }
+
+        }
+
         public async Task<List<FlightToListDto>> Get()
         {
             List<NewFlight> newFlights = await _flightUnitOfWork.FlightRepository.Get();
@@ -37,12 +54,20 @@ namespace layihe.BLL.FlightBLL
             return flightToListDtos;
         }
 
-        public async Task<FlightToAddDto> InnerModel()
+        public async Task<List<FlightToListDto>> Get(int depId)
         {
+            List<NewFlight> flights = await _flightUnitOfWork.FlightRepository.Get(depId);
+            List<FlightToListDto> flightToListDtos = _mapper.Map<List<FlightToListDto>>(flights);
+            return flightToListDtos;
+        }
+
+        public async Task<FlightToAddDto> InnerModel()        {
             FlightToAddDto flightToAddDto = new FlightToAddDto();
-            flightToAddDto.ArrivialCities = _mapper.Map<List<ArrivialToListDto>>(_testDbContext.ArrivialCities.ToList());
             flightToAddDto.DepartureCities = _mapper.Map<List<DepartureToListDto>>(_testDbContext.DepartureCities.ToList());
+            flightToAddDto.ArrivialCities = _mapper.Map<List<ArrivialToListDto>>(_testDbContext.ArrivialCities.ToList());
             return flightToAddDto;
         }
+
+        
     }
 }

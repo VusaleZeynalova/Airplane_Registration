@@ -18,6 +18,7 @@ namespace layihe.BLL.Mapper
             CreateMap<DepatureCityToAddDto, DepartureCity>();
             CreateMap<DepartureCity, DepartureToListDto>();
             CreateMap<FlightToAddDto, NewFlight>();
+            CreateMap<FlightToSerarchDto, NewFlight>().ReverseMap();
             CreateMap<NewFlight, FlightToListDto>();
         }
     }

@@ -1,12 +1,23 @@
-﻿@using layihe.Dtos.FlightDtos
-@model List<FlightToListDto> 
+﻿
+@using layihe.Dtos.FlightDtos
+@model List<FlightToListDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <style>
+    .flightfind {
+        position: relative !important;
+        background-image: url("../flihgtsearchbackground.jpg");
+        width: 100% !important;
+        height: 100% !important;
+        position: relative;
+        background-size: cover;
+        background-position: center;
+    }
     .flightIndex {
-        margin-left: 120px !important;
+        margin-left: 100px !important;
+        margin-top: 100px !important;
     }
 
         .flightIndex .table {
@@ -14,25 +25,18 @@
             color: dodgerblue;
             text-align: center;
         }
-
-        .flightIndex .btn {
-            float: right !important;
-            margin: 15px 0 15px 15px;
-        }
-
     .table {
         --bs-table-striped-bg: lavender;
         --bs-table-striped-color: dodgerblue;
     }
 </style>
-<div class="city">
-    
+<div class="flightfind">
+
 
     <div style="position:absolute" class="flightIndex">
-        <a href="/Flight/Registration" class="btn btn-primary">Add</a>
-        <a href="/Flight/Search" class="btn btn-primary">Search</a>
+   <a class="btn btn-outline-primary" asp-controller="Flight" asp-action="Search">Change Search</a>
 
-        <table class="table table-bordered table-striped">
+        <table class="table table-striped">
             <thead>
                 <tr>
                     <th>From</th>
@@ -42,6 +46,8 @@
                     <th>Capacity</th>
                     <th>Seating Capacity</th>
                     <th>Price</th>
+                    <th>Sell Ticket</th>
+                    <th>Details</th>
                 </tr>
             </thead>
             <tbody>
@@ -59,6 +65,8 @@
                             <td>@f.Capacity</td>
                             <td>@f.SeatingCapacity</td>
                             <td>@f.Price</td>
+                            <td>@Html.ActionLink("Sell", "SellTicket", "Flight", new { id = f.NewFlightId }, new { @class = "btn btn-primary" })</td>
+                            <td>@Html.ActionLink("Detail", "Info", "Flight", new { id = f.NewFlightId }, new { @class = "btn btn-success" })</td>
                         </tr>
                     }
                 }

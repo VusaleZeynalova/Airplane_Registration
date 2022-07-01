@@ -20,8 +20,36 @@ namespace layihe.DAL.FlightDAL
             await _testDbContext.AddAsync(newFlight);
         }
 
+        public async Task<List<NewFlight>> Find(int depId, int toId, string date)
+        {
+            if (depId != null && toId != null && date!=null)
+            {
+              
+                List<NewFlight> newFlights = await _testDbContext.NewFlights.Where(m => m.DepartureCityId == depId && m.ArrivialCityId == toId &&(m.DepartureTime).Day==Convert.ToDateTime(date).Day&& (m.DepartureTime).Month== Convert.ToDateTime(date).Month&& (m.DepartureTime).Year
+                == Convert.ToDateTime(date).Year).Include(m => m.DepartureCity).Include(m => m.ArrivialCity).ToListAsync();
+                return newFlights;
+            }
+            else
+            {
+                List<NewFlight> newFlights = await _testDbContext.NewFlights.Include(m => m.DepartureCity).Include(m => m.ArrivialCity).ToListAsync();
+                return newFlights;
+            }
+
+        }
+
         public async Task<List<NewFlight>> Get()
         {
-            return await _testDbContext.NewFlights.Include(m=>m.DepartureCity).Include(m=>m.ArrivialCity).ToListAsync();       }
+            return await _testDbContext.NewFlights.Include(m => m.DepartureCity).Include(m => m.ArrivialCity).ToListAsync();
+        }
+
+        public async Task<List<NewFlight>> Get(int depId)
+        {
+            return await _testDbContext.NewFlights.Where(m => m.DepartureCityId == depId).Include(m => m.DepartureCity).Include(m => m.ArrivialCity).ToListAsync();
+        }
+
+        public async Task<NewFlight> GetFlight(int id)
+        {
+            return await _testDbContext.NewFlights.FirstOrDefaultAsync(m => m.NewFlightId == id);
+        }
     }
 }

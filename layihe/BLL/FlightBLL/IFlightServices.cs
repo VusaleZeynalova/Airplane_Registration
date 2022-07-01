@@ -11,6 +11,9 @@ namespace layihe.BLL.FlightBLL
         Task Addasync(FlightToAddDto flightToAddDto);
         Task<List<FlightToListDto>> Get();
         Task<FlightToAddDto> InnerModel();
+        Task<List<FlightToListDto>> Find(int depId, int toId, string date);
+        Task<List<FlightToListDto>> Get(int depId);
+
 
     }
 }
