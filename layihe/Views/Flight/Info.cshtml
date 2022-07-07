@@ -1,0 +1,72 @@
+﻿@using layihe.Dtos.FlightDtos
+@model FlightToListDto
+@{
+    ViewData["Title"] = "Info";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    .detail-container {
+        position: relative !important;
+        background-image: url("/detailsbackground.jpg");
+        width: 100% !important;
+        height: 101% !important;
+        background-size: cover;
+        background-position: center;
+    }
+
+        .detail-container .flightIndex {
+            position:absolute;
+            left: 50%;
+            transform: translate(-50%);
+            width: 70%;
+            top: 20%;
+        }
+
+     .detail-container   .flightIndex .table {
+            background-color: whitesmoke;
+            text-align: center;
+            margin-top:35px;
+        }
+     .detail-container .flightIndex .table tr{
+         color:slategray;
+     }
+        .detail-container .table th {
+            color: darkblue;
+        }
+    .table {
+        --bs-table-striped-bg: lavender;
+        --bs-table-striped-color: dodgerblue;
+    }
+</style>
+<div class="detail-container">
+    <div  class="flightIndex">
+       
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Departure Time</th>
+                    <th>Arrivial Time</th>
+                    <th>Capacity</th>
+                    <th>Seating Capacity</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody> 
+                        <tr>
+                            <td>@Model.DepartureCity.DepName</td>
+                            <td>@Model.ArrivialCity.Name</td>
+                            <td>@Model.DepartureTime.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td>@Model.ArrivialTime.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td>@Model.Capacity</td>
+                            <td>@Model.SeatingCapacity</td>
+                            <td>@Model.Price</td>
+                
+                        </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+

@@ -13,5 +13,6 @@ namespace layihe.DAL.FlightDAL
         Task<List<NewFlight>> Find(int depId,int toId,string date);
         Task<List<NewFlight>> Get(int depId);
         Task<NewFlight> GetFlight(int id);
+        Task Delete(int id);
     }
 }

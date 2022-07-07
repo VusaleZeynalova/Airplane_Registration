@@ -14,6 +14,9 @@
             text-align:center;
             margin: auto !important;
         }
+        .departure button {
+            margin-left: 40px !important;
+        }
 
        
 </style>
@@ -41,11 +44,12 @@
     </div>
 </div>
 <div style="position:relative" class="departure">
-    <form asp-controller="City" asp-action="AddDeparture" method="post" >
+    <form asp-controller="City" asp-action="AddDeparture" method="post">
         <div class="mb-3">
             <h1 style="color:floralwhite;text-align:center">Departure city name</h1>
             <input type="text" class="form-control" id="id" asp-for="DepName" placeholder="Enter DepartureCity">
         </div>
-        <button type="submit" class="btn btn-primary">Save City</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+
     </form>
 </div>

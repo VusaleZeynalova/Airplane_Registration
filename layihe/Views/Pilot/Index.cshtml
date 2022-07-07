@@ -1,0 +1,60 @@
+﻿@using layihe.Dtos.PilotDtos
+@model List<PilotToListDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    .pilot-container {
+        position: relative !important;
+        background-image: url("../pilotbackground.jfif");
+        width: 100% !important;
+        height: 101% !important;
+        background-size: cover;
+        background-position: center;
+    }
+.pilots{
+    margin-left:0px!important;
+    margin-right:0px!important;
+}
+    .btn {
+        margin: 15px 0 15px 15px;
+        color: whitesmoke;
+        border-color: whitesmoke;
+        font-weight: bolder;
+    }
+    .pilot-container .card-text {
+        text-align: center;
+        color: dodgerblue;
+        font-size: 20px;
+        font-weight: bolder;
+    }
+    }
+</style>
+
+@{ 
+    int i = 0;
+}
+<div class="pilot-container">
+  <a asp-controller="Pilot" asp-action="Registration" class="btn btn-outline-primary">Add</a>
+
+    <div class="row pilots">
+        @foreach (var p in Model)
+        {
+            if (i > 0 && i % 3 == 0)
+            {
+                @:<div class="row" style="margin-top:20px"> </div>
+            }
+            <div class="col-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="/files/@p.ImagePath" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">@p.PilotName.</p>
+                    </div>
+                </div>
+            </div>
+            i++;
+
+        }
+    </div>
+</div>

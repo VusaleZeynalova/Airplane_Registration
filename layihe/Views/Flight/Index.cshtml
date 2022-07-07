@@ -6,7 +6,8 @@
 }
 <style>
     .flightIndex {
-        margin-left: 120px !important;
+        margin-left: 60px !important;
+        margin-right:10px;
     }
 
         .flightIndex .table {
@@ -15,7 +16,7 @@
             text-align: center;
         }
 
-        .flightIndex .btn {
+        .flightIndex .btn-primary {
             float: right !important;
             margin: 15px 0 15px 15px;
         }
@@ -42,6 +43,9 @@
                     <th>Capacity</th>
                     <th>Seating Capacity</th>
                     <th>Price</th>
+                    <th></th>
+                    <th></th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -51,19 +55,30 @@
 
                     @if (f.DepartureTime >= DateTime.Now)
                     {
-                        <tr>
-                            <td>@f.DepartureCity.DepName</td>
-                            <td>@f.ArrivialCity.Name</td>
-                            <td>@f.DepartureTime</td>
-                            <td>@f.ArrivialTime</td>
-                            <td>@f.Capacity</td>
-                            <td>@f.SeatingCapacity</td>
-                            <td>@f.Price</td>
-                        </tr>
+                <tr>
+                    <td>@f.DepartureCity.DepName</td>
+                    <td>@f.ArrivialCity.Name</td>
+                    <td>@f.DepartureTime.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@f.ArrivialTime.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@f.Capacity</td>
+                    <td>@f.SeatingCapacity</td>
+                    <td>@f.Price</td>
+                    @if ((f.Capacity - f.SeatingCapacity) < f.SeatingCapacity)
+                    {
+                        <td>@Html.ActionLink("Cancel Flight", "FlightCancel", "Flight", new { id = f.NewFlightId }, new { @class = "btn btn-danger" })</td>
                     }
-                }
-            </tbody>
-        </table>
+                    else
+                    {
+                        <td><button class="disabled">Cancel Flight</button></td>
+                    }
+                    <td>@Html.ActionLink("Detail", "Info", "Flight", new { id = f.NewFlightId }, new { @class = "btn btn-success" })</td>
+
+                </tr>
+                    }
+
+            }
+                </tbody>
+            </table>
     </div>
 
 </div>

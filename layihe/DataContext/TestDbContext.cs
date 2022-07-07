@@ -16,5 +16,8 @@ namespace layihe.DataContext
      public   DbSet<ArrivialCity> ArrivialCities { get; set; }
      public   DbSet<DepartureCity> DepartureCities { get; set; }
      public  DbSet<NewFlight> NewFlights { get; set; }
+     public  DbSet<Passenger> Passengers { get; set; }
+     public  DbSet<Ticket>Tickets { get; set; }
+     public  DbSet<Pilot> Pilots { get; set; }
     }
 }

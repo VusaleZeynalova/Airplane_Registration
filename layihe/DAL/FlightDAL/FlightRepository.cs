@@ -20,9 +20,15 @@ namespace layihe.DAL.FlightDAL
             await _testDbContext.AddAsync(newFlight);
         }
 
+        public async Task Delete(int id)
+        {
+            var result = await _testDbContext.NewFlights.FindAsync(id);
+             _testDbContext.NewFlights.Remove(result);
+        }
+
         public async Task<List<NewFlight>> Find(int depId, int toId, string date)
         {
-            if (depId != null && toId != null && date!=null)
+            if (depId != 0 && toId != 0 && date!=null)
             {
               
                 List<NewFlight> newFlights = await _testDbContext.NewFlights.Where(m => m.DepartureCityId == depId && m.ArrivialCityId == toId &&(m.DepartureTime).Day==Convert.ToDateTime(date).Day&& (m.DepartureTime).Month== Convert.ToDateTime(date).Month&& (m.DepartureTime).Year
@@ -39,7 +45,7 @@ namespace layihe.DAL.FlightDAL
 
         public async Task<List<NewFlight>> Get()
         {
-            return await _testDbContext.NewFlights.Include(m => m.DepartureCity).Include(m => m.ArrivialCity).ToListAsync();
+            return await _testDbContext.NewFlights.Include(m => m.DepartureCity).Include(m => m.ArrivialCity).OrderBy(m=>m.DepartureTime).ToListAsync();
         }
 
         public async Task<List<NewFlight>> Get(int depId)
@@ -49,7 +55,9 @@ namespace layihe.DAL.FlightDAL
 
         public async Task<NewFlight> GetFlight(int id)
         {
-            return await _testDbContext.NewFlights.FirstOrDefaultAsync(m => m.NewFlightId == id);
+            return await _testDbContext.NewFlights.FindAsync(id);
         }
+
+    
     }
 }

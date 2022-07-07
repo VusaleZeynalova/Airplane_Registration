@@ -13,6 +13,8 @@ namespace layihe.BLL.FlightBLL
         Task<FlightToAddDto> InnerModel();
         Task<List<FlightToListDto>> Find(int depId, int toId, string date);
         Task<List<FlightToListDto>> Get(int depId);
+        Task<FlightToListDto> GetFlight(int id);
+        Task Delete(int id);
 
 
     }

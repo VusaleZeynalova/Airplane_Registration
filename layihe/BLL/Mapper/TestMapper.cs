@@ -1,6 +1,10 @@
 ﻿using AutoMapper;
+using layihe.Dtos;
 using layihe.Dtos.CityDtos;
 using layihe.Dtos.FlightDtos;
+using layihe.Dtos.PassengerDtos;
+using layihe.Dtos.PilotDtos;
+using layihe.Dtos.TicketDtos;
 using layihe.Models;
 using System;
 using System.Collections.Generic;
@@ -18,8 +22,15 @@ namespace layihe.BLL.Mapper
             CreateMap<DepatureCityToAddDto, DepartureCity>();
             CreateMap<DepartureCity, DepartureToListDto>();
             CreateMap<FlightToAddDto, NewFlight>();
+            CreateMap<PassengerToAddDto, Passenger>();
+            CreateMap<Passenger, PassengerToListDto>();
             CreateMap<FlightToSerarchDto, NewFlight>().ReverseMap();
-            CreateMap<NewFlight, FlightToListDto>();
+            CreateMap<NewFlight, FlightToListDto>().ReverseMap();
+            CreateMap<TicketToAddDto, Ticket>().ReverseMap();
+            CreateMap<Ticket, TicketToListDto>().ReverseMap();
+            CreateMap<PilotToAddDto, Pilot>();
+            CreateMap<Pilot, PilotToListDto>();
+
         }
     }
 }

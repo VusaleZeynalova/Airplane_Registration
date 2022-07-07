@@ -86,6 +86,79 @@ namespace layihe.Migrations
                     b.ToTable("NewFlights");
                 });
 
+            modelBuilder.Entity("layihe.Models.Passenger", b =>
+                {
+                    b.Property<int>("PassengerId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasportNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PassengerName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PassengerSurname")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PassengerId");
+
+                    b.ToTable("Passengers");
+                });
+
+            modelBuilder.Entity("layihe.Models.Pilot", b =>
+                {
+                    b.Property<int>("PilotId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PilotName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("PilotId");
+
+                    b.ToTable("Pilots");
+                });
+
+            modelBuilder.Entity("layihe.Models.Ticket", b =>
+                {
+                    b.Property<int>("TicketId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("NewFlightId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PassengerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TicketNumber")
+                        .HasColumnType("int");
+
+                    b.HasKey("TicketId");
+
+                    b.HasIndex("NewFlightId");
+
+                    b.HasIndex("PassengerId");
+
+                    b.ToTable("Tickets");
+                });
+
             modelBuilder.Entity("layihe.Models.NewFlight", b =>
                 {
                     b.HasOne("layihe.Models.ArrivialCity", "ArrivialCity")
@@ -103,6 +176,25 @@ namespace layihe.Migrations
                     b.Navigation("ArrivialCity");
 
                     b.Navigation("DepartureCity");
+                });
+
+            modelBuilder.Entity("layihe.Models.Ticket", b =>
+                {
+                    b.HasOne("layihe.Models.NewFlight", "NewFlight")
+                        .WithMany()
+                        .HasForeignKey("NewFlightId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("layihe.Models.Passenger", "Passenger")
+                        .WithMany()
+                        .HasForeignKey("PassengerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("NewFlight");
+
+                    b.Navigation("Passenger");
                 });
 #pragma warning restore 612, 618
         }

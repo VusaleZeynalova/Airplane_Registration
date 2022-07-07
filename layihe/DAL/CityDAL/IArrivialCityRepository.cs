@@ -10,5 +10,6 @@ namespace layihe.DAL.CityDAL
    public interface IArrivialCityRepository
     {
         Task Addsync(ArrivialCity arrivialCity);
+       Task GetArrivial(int id);
     }
 }

@@ -20,6 +20,11 @@ namespace layihe.DAL.CityDAL
             await _testDbContext.AddAsync(arrivialCity);
         }
 
-      
+        public async Task GetArrivial(int id)
+        {
+           
+            await  _testDbContext.ArrivialCities.FindAsync(id);
+            
+        }
     }
 }

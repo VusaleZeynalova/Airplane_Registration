@@ -61,6 +61,10 @@
             background: #FFFFFF;
             border-color: var(--primary);
         }
+
+        .add-button-active:active {
+            background-color: transparent;
+        }
     </style>
 </head>
 
@@ -88,12 +92,15 @@
                     <a href="/Home/Index" class="nav-item nav-link "><i class="fa-solid fa-house me-2"></i>Home</a>
 
                     <a href="/Flight/Index" class="nav-item nav-link"><i class="fa-solid fa-plane-departure me-2"></i>Flights</a>
-                    <a href="form.html" class="nav-item nav-link"><i class="fa-solid fa-user-tie me-2"></i>Pilots</a>
+                    <a href="/Ticket/Index" class="nav-item nav-link"><i class="fa-solid fa-ticket me-2"></i>Tickets</a>
+                    <a href="/Pilot/Index" class="nav-item nav-link"><i class="fa-solid fa-user-tie me-2"></i>Pilots</a>
                     <div class="nav-item dropdown">
                         <a href="/City/Main" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-earth-americas me-2"></i>Cities</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a asp-controller="City" asp-action="Main" class="dropdown-item"><i class="fa-solid fa-plus me-2"></i>Add</a>
+                            <a asp-controller="City" asp-action="Main" class="dropdown-item add-button-active"><i class="fa-solid fa-plus me-2"></i>Add</a>
                         </div>
+                        <a href="/Report/Index" class="nav-item nav-link"><i class="fa-solid fa-calendar me-2"></i>Report</a>
+
                         <partial name="_LoginPartial" />
 
                     </div>

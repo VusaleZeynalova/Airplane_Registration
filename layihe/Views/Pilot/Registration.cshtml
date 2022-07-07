@@ -1,0 +1,52 @@
+﻿
+@using layihe.Dtos.PilotDtos
+@model PilotToAddDto
+
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    .registration {
+        position: absolute;
+        background-color: #F3F6F9 !important;
+        padding: 40px;
+        margin-left: 300px;
+        margin-top: 70px;
+        color: #009CFF !important;
+        font-size: 18px;
+    }
+   
+    .registration button {
+        color: white;
+        margin-top: 15px;
+        float: right;
+        background-color: #009CFF!important;
+        border-color: #009CFF!important;
+    }
+
+    .registr-container {
+        position: relative !important;
+        background-image: url("../registrbackground.jpg");
+        width: 100% !important;
+        height: 101% !important;
+        background-size: cover;
+        background-position: center;
+    }
+</style>
+<div class="registr-container">
+    <div class="registration">
+        <form asp-controller="Pilot" asp-action="Add" method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="name" class="form-label">Pilot Name</label>
+                <input type="text" class="form-control" id="id" asp-for="PilotName" placeholder="Enter name">
+            </div>
+            <div class="mb-3">
+                <label for="imagePath" class="form-label">ImagePath</label>
+                <input type="file" class="form-control" id="id" asp-for="ImagePath">
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+
+        </form>
+    </div>
+</div>

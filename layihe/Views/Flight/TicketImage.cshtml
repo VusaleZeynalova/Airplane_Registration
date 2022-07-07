@@ -1,0 +1,78 @@
+﻿
+@{
+    ViewData["Title"] = "TicketImage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@using layihe.Dtos.TicketDtos
+@model TicketToAddDto
+<style>
+    .ticket {
+        position: relative !important;
+        background-image: url("../ticktbackground.jpg");
+        width: 100% !important;
+        height: 100% !important;
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        padding-top:40px;
+    }
+    .ticket label{
+        width:100px;
+    }
+    .ticket .table{
+        margin-bottom:50px;
+        color:whitesmoke;
+    }
+        .ticket .btn {
+            background-color: darkblue;
+            border-color: darkblue;
+            float: right;
+            width: 15%;
+            margin-right: 10px;
+            font-size: 25px;
+            margin-top: 210px;
+        }
+</style>
+<div class="ticket">
+    <table class="table">
+        <thead>
+         <th>Name</th>
+         <th>Surname</th>
+         <th>Passport Nmber</th>
+         <th>Phone</th>
+         <th>Email</th>
+         <th>Ticket number</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.Passenger.PassengerName</td>
+                <td>@Model.Passenger.PassengerSurname</td>
+                <td>@Model.Passenger.PasportNumber</td>
+                <td>@Model.Passenger.PhoneNumber</td>
+                <td>@Model.Passenger.Email</td>
+                <td>@Model.TicketNumber</td>
+               
+            </tr>
+        </tbody>
+    </table>
+ <table class="table">
+     <thead>
+         <th>From</th>
+         <th>Departure Time</th>
+         <th>To</th>
+         <th>Arrivial Time</th>
+         <th>Price</th>
+     </thead>
+     <tbody>
+         <tr>
+
+             <td>@Model.NewFlight.DepartureCity.DepName</td>
+             <td>@Model.NewFlight.DepartureTime.ToString("dd/MM/yyyy HH:mm")</td>
+             <td>@Model.NewFlight.ArrivialCity.Name</td>
+             <td>@Model.NewFlight.ArrivialTime.ToString("dd/MM/yyyy HH:mm")</td>
+             <td>@Model.NewFlight.Price</td>
+         </tr>
+     </tbody>
+ </table>
+ <button class="btn btn-primary">Print</button>
+</div>

@@ -2,8 +2,14 @@ using layihe.AdminUnitOfWork;
 using layihe.BLL.CityBLL;
 using layihe.BLL.FlightBLL;
 using layihe.BLL.Mapper;
+using layihe.BLL.PassengerBLL;
+using layihe.BLL.PilotBLL;
+using layihe.BLL.TicketBLL;
 using layihe.DAL.CityDAL;
 using layihe.DAL.FlightDAL;
+using layihe.DAL.PassengerDAL;
+using layihe.DAL.PilotDAL;
+using layihe.DAL.TicketDAL;
 using layihe.Data;
 using layihe.DataContext;
 using layihe.Models;
@@ -53,6 +59,15 @@ namespace layihe
             services.AddScoped<IFlightUnitOfWork, FlightUnitOfWork>();
             services.AddScoped<IFlightRepository, FlightRepository>();
             services.AddScoped<IFlightServices, FlightServices>();
+            services.AddScoped<IPassengerUnitOfWork, PassengerUnitOfWork>();
+            services.AddScoped<IPassengerRepository, PassengerRepository>();
+            services.AddScoped<IPassengerServices, PassengerServices>();
+            services.AddScoped<ITicketUnitOfWork, TicketUnitOfWork>();
+            services.AddScoped<ITicketRepository, TicketRepository>();
+            services.AddScoped<ITicketServices, TicketServices>();
+            services.AddScoped<IPilotUnitOfWork, PilotUnitOfWork>();
+            services.AddScoped<IPilotRepository, PilotRepository>();
+            services.AddScoped<IPilotServices, PilotServices>();
             services.AddAutoMapper(typeof(TestMapper));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -71,7 +86,7 @@ namespace layihe
                 options.Password.RequiredUniqueChars = 1;
 
                 // Lockout settings.
-            //    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
                 options.Lockout.MaxFailedAccessAttempts = 5;
                 options.Lockout.AllowedForNewUsers = true;
 
@@ -85,8 +100,7 @@ namespace layihe
             {
                 // Cookie settings
                 options.Cookie.HttpOnly = true;
-              //  options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
-
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
                 options.LoginPath = "/Identity/Account/Login";
                 options.AccessDeniedPath = "/Identity/Account/AccessDenied";
                 options.SlidingExpiration = true;

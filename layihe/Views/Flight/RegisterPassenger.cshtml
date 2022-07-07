@@ -1,0 +1,66 @@
+﻿
+@using layihe.Dtos.TicketDtos
+@model TicketToAddDto
+@{
+    ViewData["Title"] = "RegisterPassenger";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    .passengerregistr-container {
+        position: relative!important;
+        background-image: url("/registrbackground.jpg");
+        width: 100% !important;
+        height: 101% !important;
+        background-size: cover;
+        background-position: center;
+    }
+
+        .passengerregistr-container .registration {
+            position: absolute;
+            margin-left: 290px;
+            margin-top: 80px;
+            color: white;
+            font-size: 18px;
+            font-weight: bolder;
+        }
+            .passengerregistr-container .registration .btn {
+                background-color: darkblue;
+                width: 50%;
+                border-color:darkblue;
+            }
+</style>
+<div class="passengerregistr-container">
+    <div class="registration">
+        <form asp-controller="Flight" asp-action="SellTicket" method="post">
+            <div style="float:left">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" asp-for="Passenger.PassengerName" class="form-control" placeholder="Enter Name" />
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Surname</label>
+                <input type="text" asp-for="Passenger.PassengerSurname" class="form-control" placeholder="Enter Surname" />
+            </div>
+            <div class="mb-3">
+                <label for="genrename" class="form-label">BirthDate</label>
+                <input type="date" class="form-control" asp-for="Passenger.BirthDate">
+            </div>
+                </div>
+            <div style="float:left;margin-left:20px">
+            <div class="mb-3">
+                <label for="genrename" class="form-label">Pasport Number</label>
+                <input type="text" class="form-control" id="id" asp-for="Passenger.PasportNumber" placeholder="Enter PasportNumber">
+            </div>
+            <div class="mb-3">
+                <label for="genrename" class="form-label">Phone</label>
+                <input type="text" class="form-control" id="id" asp-for="Passenger.PhoneNumber" placeholder="Enter PhoneNmber">
+            </div>
+            <div class="mb-3">
+                <label for="genrename" class="form-label">Email</label>
+                <input type="email" class="form-control" id="id" asp-for="Passenger.Email" placeholder="Enter Email">
+            </div>
+            <input type="submit" name="name" value="Sell" class="btn btn-primary" style="float:right" />
+             </div>
+        </form>
+    </div>
+</div>

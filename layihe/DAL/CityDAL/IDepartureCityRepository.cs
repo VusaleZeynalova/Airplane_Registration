@@ -9,5 +9,7 @@ namespace layihe.DAL.CityDAL
    public interface IDepartureCityRepository
     {
         Task Addsync(DepartureCity departureCities);
+        Task GetDeparture(int id);
+
     }
 }

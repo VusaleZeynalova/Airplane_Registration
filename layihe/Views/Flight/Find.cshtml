@@ -16,8 +16,7 @@
         background-position: center;
     }
     .flightIndex {
-        margin-left: 100px !important;
-        margin-top: 100px !important;
+        margin:45px 10px 0 100px!important
     }
 
         .flightIndex .table {
@@ -29,12 +28,22 @@
         --bs-table-striped-bg: lavender;
         --bs-table-striped-color: dodgerblue;
     }
+    .flightIndex .changesearchbtn {
+        float:right;
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 20px;
+        background-color: whitesmoke;
+        border-color: dodgerblue;
+        color: dodgerblue;
+    }
+    
 </style>
 <div class="flightfind">
 
 
     <div style="position:absolute" class="flightIndex">
-   <a class="btn btn-outline-primary" asp-controller="Flight" asp-action="Search">Change Search</a>
+   <a class="btn changesearchbtn" asp-controller="Flight" asp-action="Search">Change Search</a>
 
         <table class="table table-striped">
             <thead>
@@ -60,12 +69,20 @@
                         <tr>
                             <td>@f.DepartureCity.DepName</td>
                             <td>@f.ArrivialCity.Name</td>
-                            <td>@f.DepartureTime</td>
-                            <td>@f.ArrivialTime</td>
+                            <td>@f.DepartureTime.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td>@f.ArrivialTime.ToString("dd/MM/yyyy HH:mm")</td>
                             <td>@f.Capacity</td>
                             <td>@f.SeatingCapacity</td>
                             <td>@f.Price</td>
-                            <td>@Html.ActionLink("Sell", "SellTicket", "Flight", new { id = f.NewFlightId }, new { @class = "btn btn-primary" })</td>
+                            @if (f.SeatingCapacity != 0)
+                            {
+                            <td>@Html.ActionLink("Sell", "RegisterPassenger", "Flight", new { id = f.NewFlightId }, new { @class = "btn btn-primary" })</td>
+                            }
+                            else
+                            {
+                              <button class="disabled btn-primary">Sell</button>
+                            }
+
                             <td>@Html.ActionLink("Detail", "Info", "Flight", new { id = f.NewFlightId }, new { @class = "btn btn-success" })</td>
                         </tr>
                     }

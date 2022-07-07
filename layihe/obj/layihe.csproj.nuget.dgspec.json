@@ -68,6 +68,10 @@
               "target": "Package",
               "version": "[5.0.2, )"
             },
+            "Rotativa": {
+              "target": "Package",
+              "version": "[1.7.3, )"
+            },
             "SendGrid": {
               "target": "Package",
               "version": "[9.28.0, )"

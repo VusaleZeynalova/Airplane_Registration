@@ -18,5 +18,11 @@ namespace layihe.DAL.CityDAL
         {
             await _testDbContext.AddAsync(departureCities);
         }
+
+        public async Task GetDeparture(int id)
+        {
+             await _testDbContext.DepartureCities.FindAsync(id);
+        }
     }
 }
+

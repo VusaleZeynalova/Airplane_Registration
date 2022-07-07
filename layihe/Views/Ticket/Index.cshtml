@@ -1,0 +1,82 @@
+﻿@using layihe.Dtos.TicketDtos
+@model List<TicketToListDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    .flightIndex {
+        margin-left: 30px !important;
+        margin-top: 15px;
+    }
+
+        .flightIndex .table {
+            background-color: whitesmoke;
+            color: dodgerblue;
+            text-align: center;
+        }
+
+        .flightIndex .btn-primary {
+            float: right !important;
+            margin: 15px 0 15px 15px;
+        }
+
+    .table {
+        --bs-table-striped-bg: lavender;
+        --bs-table-striped-color: dodgerblue;
+    }
+</style>
+<div class="city">
+
+
+    <div style="position:absolute" class="flightIndex">
+        
+            <form asp-controller="Ticket" asp-action="SearchTicket">
+                <p>
+                    Ticket Number: <input name="ticketNumber"  />
+                    <input type="submit" value="Search" />
+                </p>
+            </form>
+        
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Departure Time</th>
+                    <th>Arrivial Time</th>
+                    <th>Passenger Name</th>
+                    <th>Passenger Surname</th>
+                    <th>Ticket Number</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var f in Model)
+                {
+                    <tr>
+                        <td>@f.NewFlight.DepartureCity.DepName</td>
+                        <td>@f.NewFlight.ArrivialCity.Name</td>
+                        <td>@f.NewFlight.DepartureTime.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>@f.NewFlight.ArrivialTime.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>@f.Passenger.PassengerName</td>
+                        <td>@f.Passenger.PassengerSurname</td>
+                        <td>@f.TicketNumber</td>
+                        <td>@f.NewFlight.Price</td>
+                        @if (f.NewFlight.DepartureTime > DateTime.Now)
+                        {
+                            <td>@Html.ActionLink("Cancel Ticket", "TicketCancel", "Ticket", new { id = f.TicketId }, new { @class = "btn btn-danger" })</td>
+                        }
+                        else
+                        {
+                            <td><button class="disabled">Cancel Ticket</button></td>
+                        }
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
